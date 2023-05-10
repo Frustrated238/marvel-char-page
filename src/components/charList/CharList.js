@@ -18,7 +18,7 @@ const CharList = (props) => {
  
     useEffect(() =>{
         onRequest(offset, true);
-    }, [])
+    }, []);
 
 
     const onRequest = (offset, initial) => {
@@ -32,10 +32,10 @@ const CharList = (props) => {
         if (newCharList.length < 9) {
             ended = true;
         }
-        setCharList(charList => [...charList, ...newCharList]);
-        setNewItemLoading(newItemLoading => false);
         setOffset(offset => offset + 9);
-        setCharEnded(charEnded => ended);
+        setCharList(charList => [...charList, ...newCharList]);
+        setNewItemLoading(false);
+        setCharEnded(ended);
     }
 
     const itemRefs = useRef([]);
