@@ -1,5 +1,7 @@
 @import '../../style/variables.scss';
 
+
+
 .char {
     &__content {
         margin-top: 50px;
@@ -15,6 +17,7 @@
         row-gap: 30px;
     }
     &__item {
+
         width: 200px;
         height: 318px;
         background-color: $dark;
@@ -31,6 +34,20 @@
         &_selected {
             box-shadow: 0 5px 20px $main-color;
             transform: translateY(-8px);
+        }
+        &-enter {
+            opacity: 0;
+        }
+        &-enter-active {
+            opacity: 1;
+            transition: opacity  500ms ease-in;
+        }
+        &-exit {
+            opacity: 1;
+        }
+        &-exit-active {
+            opacity: 0;
+            transition: all 500ms ease-in;
         }
     }
     &__name {
