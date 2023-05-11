@@ -1,5 +1,6 @@
 import { useParams , Link} from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { Helmet } from "react-helmet";
 
 import useMarvelService from '../../services/MarvelService';
 import Spinner from '../spinner/Spinner';
@@ -11,7 +12,6 @@ import './SingleCharPage.scss'
 
 const SingleCharPage = () => {
 	const {charId} = useParams();
-	console.log(charId);
 
 	const [char, setChar] = useState(null);
 	const {loading, error, getCharacter, clearError} =  useMarvelService();
@@ -50,6 +50,13 @@ const View = ({char}) => {
 	
 	return (
 		<>
+			<Helmet>
+				<meta
+					name="description"
+					content={`${name} - Marvel character`}
+					/>
+				<title>{name}</title>
+			</Helmet>
 			<AppBanner/>
 			<div className="single-char">
 				<img src={thumbnail} alt={name} className="single-char__img"/>
