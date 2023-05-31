@@ -33,6 +33,8 @@
         line-height: 18px;
     }
     &__btns {
+        display: flex;
+        justify-content: center;
         a:nth-child(1) {
             margin-right: 30px;
         }

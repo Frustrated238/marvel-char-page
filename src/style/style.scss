@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
 @import './button';
 
+
 * {
     font-family: "Roboto Condensed", sans-serif;
     margin: 0;
@@ -80,3 +81,6 @@ main {
         opacity: 1
     }
 }
+
+
+@import './media';

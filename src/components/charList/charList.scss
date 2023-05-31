@@ -58,3 +58,18 @@
         color: #fff;
     }
 }
+
+
+@media (max-width:1200px) {
+	.char {
+		&__content {
+			grid-template-columns: 650px 285px;
+			column-gap: 15px;
+		}
+		&__grid {
+			grid-template-columns: repeat(3, 200px);
+			column-gap: 20px;
+			row-gap: 30px;
+		}
+	}
+}

@@ -63,3 +63,26 @@
     }
 
 }
+
+
+@media (max-width:1200px) {
+	.char {
+        &__btns {
+            margin-top: 20px;
+        }
+        &__info {
+            &-name{
+                line-height: 25px;
+            }
+        }
+		&__basics{
+            display: block;
+            text-align:center;
+            margin: 0;
+            img {
+                width: 180px;
+                height: 180px;
+            }
+        }
+    }
+}

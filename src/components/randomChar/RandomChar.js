@@ -14,7 +14,7 @@ const RandomChar = () => {
 
     useEffect(() => {
         updateChar();
-        const timerId = setInterval(updateChar, 60000);
+        const timerId = setInterval(updateChar, 120000);
         return () => { clearInterval(timerId) }
     }, [])
 
@@ -66,12 +66,12 @@ const View = ({data}) => {
                     {description}
                 </p>
                 <div className="randomchar__btns">
-                    <a href={homepage} className="button button__main">
-                        <div className="inner">homepage</div>
-                    </a>
-                    <a href={wiki} className="button button__secondary">
+                    <a href={wiki} className="button button__main">
                         <div className="inner">Wiki</div>
                     </a>
+                    {/* <a href={wiki} className="button button__secondary">
+                        <div className="inner">Wiki</div>
+                    </a> */}
                 </div>
             </div>
          </div>

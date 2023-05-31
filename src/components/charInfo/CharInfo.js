@@ -58,9 +58,9 @@ const View = ({data}) => {
                         <a href={homepage} className="button button__main">
                             <div className="inner">homepage</div>
                         </a>
-                        <a href={wiki} className="button button__secondary">
+                        {/* <a href={wiki} className="button button__secondary">
                             <div className="inner">Wiki</div>
-                        </a>
+                        </a> */}
                     </div>
                 </div>
             </div>

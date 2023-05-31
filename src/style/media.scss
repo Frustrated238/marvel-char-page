@@ -1,0 +1,9 @@
+@import './variables';
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
+@import './button';
+
+@media (max-width:1200px) {
+    .app {
+       width: 950px;
+    }
+}

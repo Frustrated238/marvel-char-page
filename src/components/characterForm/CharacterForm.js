@@ -4,7 +4,6 @@ import * as Yup from 'yup';
 import {Link} from 'react-router-dom';
 
 import useMarvelService from '../../services/MarvelService';
-import ErrorMessage from '../errorMessage/ErrorMessage';
 
 import './CharacterForm.scss';
 
@@ -45,7 +44,8 @@ const CharSearchForm = () => {
 
         getCharByName(name)
             .then(onCharLoaded)
-            .then(()=> setProcess('confirmed'));
+            .then(()=> setProcess('confirmed'))
+            .catch(()=> setProcess('error'));
     }
 
 
