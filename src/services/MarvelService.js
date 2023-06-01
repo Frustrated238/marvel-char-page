@@ -10,7 +10,7 @@ const useMarvelService =  () =>  {
 	const _baseOffset = 210;
 	let date = new Date();
 	let ts = date.getTime().toString();
-	let _hash = CryptoJS.MD5(ts + '178987be82bea167544685353d2089bf3b2d17a1' + 'fdee923e849c6e77237bd12a7ec6d600').toString();
+	let _hash = CryptoJS.MD5(ts + '178987be82bea167544685353d2089bf3b2d17a1fdee923e849c6e77237bd12a7ec6d600').toString();
 
 	const getAllComics = async (offset = 0) => {
 		const res = await request(
@@ -35,6 +35,13 @@ const useMarvelService =  () =>  {
 	}
 	const getCharByName = async (name) => {
 		const res = await request(`${_apiBase}characters?name=${name}&ts=${ts}&${_apiKey}&hash=${_hash}`);
+		if (res.data.total == 0) {
+			setProcess('error');
+			console.log('set process to error');
+		} else {
+			console.log('set process to conf');
+			setProcess('confirmed');
+		}
 		return res.data.results.map(_transformCharacter);
 	}
 

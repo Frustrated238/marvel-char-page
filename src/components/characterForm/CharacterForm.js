@@ -16,7 +16,7 @@ const setContent = (process, char) => {
 		case 'confirmed': 
 			return <div className="char__search-wrapper">
                 <div className="char__search-success">There is! Visit {char[0].name} page?</div>
-                <Link to={`/${char[0].id}`} className="button button__secondary">
+                <Link to={`/characters/${char[0].id}`} className="button button__secondary">
                     <div className="inner">To page</div>
                 </Link>
             </div>;
@@ -36,18 +36,20 @@ const CharSearchForm = () => {
     const {getCharByName, clearError, process, setProcess} = useMarvelService();
 
     const onCharLoaded = (char) => {
-        setChar(char);
+            if(char.length) {
+                setChar(char);
+                console.log('setChar');
+            } else {
+                setProcess('error');
+            }
+        
     }
 
     const updateChar = (name) => {
         clearError();
-
         getCharByName(name)
-            .then(onCharLoaded)
-            .then(()=> setProcess('confirmed'))
-            .catch(()=> setProcess('error'));
+            .then(onCharLoaded);
     }
-
 
 
     return (
