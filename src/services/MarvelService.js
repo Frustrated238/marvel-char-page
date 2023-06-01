@@ -37,9 +37,7 @@ const useMarvelService =  () =>  {
 		const res = await request(`${_apiBase}characters?name=${name}&ts=${ts}&${_apiKey}&hash=${_hash}`);
 		if (res.data.total == 0) {
 			setProcess('error');
-			console.log('set process to error');
 		} else {
-			console.log('set process to conf');
 			setProcess('confirmed');
 		}
 		return res.data.results.map(_transformCharacter);
