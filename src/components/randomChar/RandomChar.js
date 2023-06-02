@@ -14,8 +14,8 @@ const RandomChar = () => {
 
     useEffect(() => {
         updateChar();
-        const timerId = setInterval(updateChar, 120000);
-        return () => { clearInterval(timerId) }
+        // const timerId = setInterval(updateChar, 120000);
+        // return () => { clearInterval(timerId) }
     }, [])
 
     const onCharLoaded = (char) => {
@@ -51,7 +51,7 @@ const RandomChar = () => {
 }
 
 const View = ({data}) => {
-    const {name, description, thumbnail, homepage, wiki} = data;
+    const {name, description, thumbnail, wiki} = data;
     let imgStyle = {'objectFit' : 'cover'};
     if (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
         imgStyle = {'objectFit' : 'contain'};
@@ -61,7 +61,7 @@ const View = ({data}) => {
         <div className="randomchar__block">
             <img src={thumbnail} style={imgStyle} alt="Random character" className="randomchar__img"/>
             <div className="randomchar__info">
-                <p className="randomchar__name">{name}</p>
+                <p className="randomchar__name">{name.replace(/\([^)]*\)/g, '')}</p>
                 <p className="randomchar__descr">
                     {description}
                 </p>

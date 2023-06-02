@@ -5,5 +5,29 @@
 @media (max-width:1200px) {
     .app {
        width: 950px;
+        .bg-decoration{
+            bottom: 0;
+            right: 0;
+        }
+        &__header{
+            justify-content:space-between;
+        }
     }
+}
+
+@media (max-width: 991px) {
+    .app {
+        width: 750px;
+    }
+}
+
+@media (max-width: 767px) {
+    .app {
+        width: 500px;
+    }
+}
+
+
+@media (max-width: 575px) { 
+
 }

@@ -50,7 +50,9 @@ const ComicsList = () => {
 
     const onComicsListLoaded = (newComicsList) => {
         let ended = false;
-        if (newComicsList.length < 8) {
+        if (newComicsList.length < 8 && window.innerWidth > 991) {
+            ended = true;
+        } else if (newComicsList.length < 6 && window.innerWidth <= 991) {
             ended = true;
         }
         setComicsList(comicsList => [...comicsList, ...newComicsList]);

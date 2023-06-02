@@ -8,13 +8,23 @@ const useMarvelService =  () =>  {
 	const _apiBase = 'https://gateway.marvel.com:443/v1/public/';
 	const _apiKey = 'apikey=fdee923e849c6e77237bd12a7ec6d600';
 	const _baseOffset = 210;
+	let charLimit = 9;
+	let comicsAmount = 8;
+	let descrMaxChar = 180;
+	if(window.innerWidth <= 991) {
+		charLimit = 6;
+		comicsAmount = 6;
+		descrMaxChar = 140;
+	}
+	
+
 	let date = new Date();
 	let ts = date.getTime().toString();
 	let _hash = CryptoJS.MD5(ts + '178987be82bea167544685353d2089bf3b2d17a1fdee923e849c6e77237bd12a7ec6d600').toString();
 
 	const getAllComics = async (offset = 0) => {
 		const res = await request(
-			`${_apiBase}comics?orderBy=issueNumber&limit=8&offset=${offset}&ts=${ts}&${_apiKey}&hash=${_hash}`
+			`${_apiBase}comics?orderBy=issueNumber&limit=${comicsAmount}&offset=${offset}&ts=${ts}&${_apiKey}&hash=${_hash}`
 		);
 		return res.data.results.map(_transformComics);
 	};
@@ -25,7 +35,7 @@ const useMarvelService =  () =>  {
 	};
 
 	const getAllCharacters = async (offset = _baseOffset) => {
-		const res = await request(`${_apiBase}characters?limit=9&offset=${offset}&ts=${ts}&${_apiKey}&hash=${_hash}`);
+		const res = await request(`${_apiBase}characters?limit=${charLimit}&offset=${offset}&ts=${ts}&${_apiKey}&hash=${_hash}`);
 		return res.data.results.map(_transformCharacter);
 	}
 
@@ -35,7 +45,7 @@ const useMarvelService =  () =>  {
 	}
 	const getCharByName = async (name) => {
 		const res = await request(`${_apiBase}characters?name=${name}&ts=${ts}&${_apiKey}&hash=${_hash}`);
-		if (res.data.total == 0) {
+		if (res.data.total === 0) {
 			setProcess('error');
 		} else {
 			setProcess('confirmed');
@@ -47,10 +57,11 @@ const useMarvelService =  () =>  {
 		return {
 			id: char.id,
 			name: char.name,
-			description: char.description ? `${char.description.slice(0, 210)}...` : 'There is no available description.',
+			description: char.description ? `${char.description.slice(0, descrMaxChar)}...` : 'There is no available description.',
 			thumbnail: char.thumbnail.path + '.' + char.thumbnail.extension,
 			homepage: char.urls[0].url,
-			wiki: char.urls[1].url,
+			// wiki: char.urls[1].url,
+			wiki: 'https://www.marvel.com/characters/'+ char.name,
 			comics: char.comics.items
 		}
 	}

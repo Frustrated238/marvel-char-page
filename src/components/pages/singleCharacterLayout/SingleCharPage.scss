@@ -30,3 +30,10 @@
         }
     }
 }
+
+@media (max-width:1200px) {
+
+    .single-char {
+        grid-template-columns: 293px 480px auto;
+    }
+}

@@ -46,10 +46,16 @@ const CharList = (props) => {
 
     const onCharListLoaded = (newCharList) => {
         let ended = false;
-        if (newCharList.length < 9) {
+        if (newCharList.length < 9 && window.innerWidth > 991) {
+            ended = true;
+        } else if (newCharList.length < 6 && window.innerWidth <= 991) {
             ended = true;
         }
-        setOffset(offset => offset + 9);
+        setOffset(offset => {
+            if(window.innerWidth > 991){
+                return offset + 9;
+            } else return offset + 6;
+        });
         setCharList(charList => [...charList, ...newCharList]);
         setNewItemLoading(false);
         setCharEnded(ended);

@@ -73,3 +73,14 @@
 		}
 	}
 }
+
+@media (max-width:991px) {
+    .char{
+        &__grid{
+            grid-template-columns: repeat(2, 200px);
+        }
+        &__content{
+            grid-template-columns: 450px 285px;
+        }
+    }
+}
