@@ -24,10 +24,26 @@
 @media (max-width: 767px) {
     .app {
         width: 500px;
+        padding: 48px 0 48px 0;
     }
 }
 
 
 @media (max-width: 575px) { 
-
+    .app {
+        width: 312px;
+    }
+    .active{
+        background-color: $main-color;
+        color: #FFFFFF;
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
+        border-radius: 20px;
+        width: 100%;
+    }
+    .bg-decoration{
+       display: none;
+    }
+    .button__long {
+        display: none;
+    }
 }

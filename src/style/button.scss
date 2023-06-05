@@ -85,11 +85,23 @@
     &.button__secondary::before, &.button__secondary::after {
         background-color: $grey;
     }
-    &:hover {
-        transform: translateY(-5px);
-    }
+    // &:hover {
+    //     transform: translateY(-5px);
+    // }
     &:disabled {
         filter: grayscale(50%);
+    }
+    &__mobile{
+        height: 100%;
+        width: 100%;
+        color: #fff;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 26px;
+        background-color: $main-color;
+        border: none
     }
 }
 

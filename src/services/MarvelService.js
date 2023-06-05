@@ -16,6 +16,10 @@ const useMarvelService =  () =>  {
 		comicsAmount = 6;
 		descrMaxChar = 140;
 	}
+	if(window.innerWidth <= 575) {
+		charLimit = 9;
+		comicsAmount = 6;
+	}
 	
 
 	let date = new Date();

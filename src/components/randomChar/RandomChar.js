@@ -34,6 +34,7 @@ const RandomChar = () => {
         <div className="randomchar">
             {setContent(process, View , char)}
             <div className="randomchar__static">
+            <div className='randomchar__title-mobile'>Random character for today</div>
                 <p className="randomchar__title">
                     Random character for today!<br/>
                     Do you want to get to know him better?

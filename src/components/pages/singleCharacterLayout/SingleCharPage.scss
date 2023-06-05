@@ -37,3 +37,20 @@
         grid-template-columns: 293px 480px auto;
     }
 }
+
+
+
+@media (max-width:991px) {
+    .single-char {
+        grid-template-columns: 234px 360px auto;
+        column-gap: 30px;
+        img {
+            max-width: 234px;
+            max-height: 234px;
+        }
+        &__descr {
+            font-size: 16px;
+            line-height: 22px;
+        }
+    }
+}

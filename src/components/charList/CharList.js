@@ -1,5 +1,6 @@
 import {useState, useEffect, useRef, useMemo} from 'react';
 import PropTypes from 'prop-types';
+import debounce from 'lodash.debounce';
 
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
@@ -36,6 +37,21 @@ const CharList = (props) => {
         onRequest(offset, true);
     }, []);
 
+    // useEffect(() => {
+    //     const handleScroll = debounce(() => {
+    //         const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+    //         if (scrollTop + clientHeight >= scrollHeight) {
+    //             onRequest(offset, false);
+    //         }
+    //     }, 100); 
+    
+    //     window.addEventListener('scroll', handleScroll);
+    
+    //     return () => {
+    //       window.removeEventListener('scroll', handleScroll);
+    //     //   handleScroll.cancel();
+    //     }
+    //   }, []);
 
     const onRequest = (offset, initial) => {
         initial ? setNewItemLoading(false) : setNewItemLoading(true);
@@ -52,7 +68,7 @@ const CharList = (props) => {
             ended = true;
         }
         setOffset(offset => {
-            if(window.innerWidth > 991){
+            if(window.innerWidth > 991 || window.innerWidth <= 575){
                 return offset + 9;
             } else return offset + 6;
         });
@@ -68,6 +84,16 @@ const CharList = (props) => {
         itemRefs.current[id].classList.add('char__item_selected');
         itemRefs.current[id].focus();
     }
+
+    // const handleScroll = () => {
+    //     if (newItemLoading) return;
+    //     const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+    //     if (scrollTop + clientHeight >= scrollHeight && newItemLoading === false) {
+    //       onRequest(offset);
+	// 	}
+    // }
+
+	// window.addEventListener('scroll', handleScroll);
 
 
     function renderItems(arr) {
@@ -102,6 +128,16 @@ const CharList = (props) => {
         return (
             <ul className="char__grid">
                     {items}
+            <li>
+            {window.innerWidth <= 575 ?
+                <button 
+                        className=" button__mobile"
+                        disabled={newItemLoading}
+                        style={{'display': charEnded ? 'none' : 'block'}}
+                        onClick={() => onRequest(offset)}>
+                        <div className="inner">load more</div>
+                </button> : null }    
+            </li>
             </ul>
         )
     }
@@ -113,13 +149,14 @@ const CharList = (props) => {
     return (
         <div className="char__list">
             {elements}
-            <button 
-                className="button button__main button__long"
-                disabled={newItemLoading}
-                style={{'display': charEnded ? 'none' : 'block'}}
-                onClick={() => onRequest(offset)}>
-                <div className="inner">load more</div>
-            </button>
+            {window.innerWidth > 575 ?
+                <button 
+                    className="button button__main button__long"
+                    disabled={newItemLoading}
+                    style={{'display': charEnded ? 'none' : 'block'}}
+                    onClick={() => onRequest(offset)}>
+                    <div className="inner">load more</div>
+                </button> : null } 
         </div>
     )
     

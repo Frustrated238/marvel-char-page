@@ -7,8 +7,8 @@
     column-gap: 50px;
     align-items: start;
     &__img {
-        width: 293px;
-        height: 450px;
+        max-width: 293px;
+        max-height: 450px;
     }
     &__name {
         font-weight: bold;
@@ -42,5 +42,21 @@
 
     .single-comic {
         grid-template-columns: 293px 450px auto;
+    }
+}
+
+
+@media (max-width:991px) {
+    .single-comic {
+        grid-template-columns: 234px 360px auto;
+        column-gap: 30px;
+        img {
+            max-width: 234px;
+            max-height: 360px;
+        }
+        &__descr {
+            font-size: 16px;
+            line-height: 22px;
+        }
     }
 }

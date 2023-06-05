@@ -106,3 +106,35 @@
         }
     }
 }
+
+@media (max-width:575px) {
+    .randomchar {
+        display: block;
+        &__static{
+            padding: 20px 35px;
+            display: block;
+            text-align: center;
+            .button {
+                margin-top: 16px;
+                width: 150px;
+            }
+        }
+        &__title-mobile {
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 27px;
+            color: white;
+        }
+        &__name{
+            margin-top: 10px;
+        }
+        &__title {
+            display: none;
+        }
+        &__block{
+            padding: 16px 36px 32px 36px;
+            display: block;
+            text-align: center;
+        }
+    }
+}

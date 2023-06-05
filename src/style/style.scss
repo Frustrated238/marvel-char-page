@@ -9,7 +9,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+.active {
+    color: $main-color;
+}
 ul,
 li,
 dl {
