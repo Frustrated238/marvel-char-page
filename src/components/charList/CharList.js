@@ -1,6 +1,7 @@
 import {useState, useEffect, useRef, useMemo} from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash.debounce';
+import {Link} from 'react-router-dom';
 
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
@@ -29,7 +30,7 @@ const CharList = (props) => {
     const [newItemLoading, setNewItemLoading] = useState(false);
     const [offset, setOffset] = useState(210);
     const [charEnded, setCharEnded] = useState(false);
-
+    const screenWidth = window.innerWidth;
 
     const {getAllCharacters, process, setProcess} =  useMarvelService();
  
@@ -62,13 +63,13 @@ const CharList = (props) => {
 
     const onCharListLoaded = (newCharList) => {
         let ended = false;
-        if (newCharList.length < 9 && window.innerWidth > 991) {
+        if (newCharList.length < 9 && screenWidth > 991) {
             ended = true;
-        } else if (newCharList.length < 6 && window.innerWidth <= 991) {
+        } else if (newCharList.length < 6 && screenWidth <= 991) {
             ended = true;
         }
         setOffset(offset => {
-            if(window.innerWidth > 991 || window.innerWidth <= 575){
+            if(screenWidth > 991 || window.innerWidth <= 575){
                 return offset + 9;
             } else return offset + 6;
         });
@@ -104,14 +105,19 @@ const CharList = (props) => {
             }
             
             return (
-                    <li 
+                <Link to={screenWidth <= 575 ? `/characters/${item.id}`: null}>
+                        <li 
                         className="char__item"
                         tabIndex={0}
                         ref={el => itemRefs.current[i] = el}
                         key={item.id}
                         onClick={() => {
-                            props.onCharSelected(item.id);
-                            focusOnItem(i);
+                            if (screenWidth <= 575) {
+
+                            } else {
+                                props.onCharSelected(item.id);
+                                focusOnItem(i);
+                            }
                         }}
                         onKeyUp={(e) => {
                             if (e.key === ' ' || e.key === "Enter") {
@@ -122,6 +128,8 @@ const CharList = (props) => {
                             <img src={item.thumbnail} alt={item.name} style={imgStyle}/>
                             <div className="char__name">{item.name}</div>
                     </li>
+                </Link>
+
             )
         });
 
@@ -129,7 +137,7 @@ const CharList = (props) => {
             <ul className="char__grid">
                     {items}
             <li>
-            {window.innerWidth <= 575 ?
+            {screenWidth <= 575 ?
                 <button 
                         className=" button__mobile"
                         disabled={newItemLoading}

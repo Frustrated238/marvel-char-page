@@ -54,3 +54,30 @@
         }
     }
 }
+
+@media (max-width: 575px) { 
+    .single-char {
+        display: block;
+        text-align: center;
+        img {
+            max-width: 180px;
+            max-height: 180px;
+        }
+        &__descr {
+            font-size: 16px;
+            line-height: 22px;
+        }
+        &__back {
+            margin-bottom: 28px;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 21px;
+            &__img{
+                margin-right: 12px;
+                height: 18px;
+                transform: translateY(2px);
+            }
+        }
+
+    }
+}

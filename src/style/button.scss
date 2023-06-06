@@ -69,6 +69,7 @@
         height: 10px;
         margin-left: 10px;
         transition: none;
+        border: none;
 
     }
     &::after {
@@ -77,6 +78,7 @@
         height: 10px;
         margin-right: 10px;
         transition: none;
+        border: none;
 
     }
     &.button__main::before, &.button__main::after {
@@ -92,8 +94,8 @@
         filter: grayscale(50%);
     }
     &__mobile{
-        height: 100%;
-        width: 100%;
+        width: 150px;
+        height: 220px;
         color: #fff;
         text-align: center;
         text-transform: uppercase;

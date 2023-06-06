@@ -46,4 +46,20 @@
     .button__long {
         display: none;
     }
+    main {
+        margin-top: 28px;
+        position: relative;
+    }
+    .char__content .char__info {
+            display: none;
+    }
+    .single-char{
+        &__back {
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 21px;
+        }
+    }
+   
+
 }
