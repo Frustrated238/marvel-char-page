@@ -30,7 +30,12 @@ const CharList = (props) => {
     const [newItemLoading, setNewItemLoading] = useState(false);
     const [offset, setOffset] = useState(210);
     const [charEnded, setCharEnded] = useState(false);
+    
     const screenWidth = window.innerWidth;
+    let charAmount;
+    if (screenWidth <= 575) {
+        charAmount = 8;
+    } else charAmount = 9;
 
     const {getAllCharacters, process, setProcess} =  useMarvelService();
  
@@ -56,7 +61,7 @@ const CharList = (props) => {
 
     const onRequest = (offset, initial) => {
         initial ? setNewItemLoading(false) : setNewItemLoading(true);
-        getAllCharacters(offset)
+        getAllCharacters(offset, initial ? 9 : charAmount)
             .then(onCharListLoaded)
             .then(()=> setProcess('confirmed'));
     }
@@ -69,7 +74,7 @@ const CharList = (props) => {
             ended = true;
         }
         setOffset(offset => {
-            if(screenWidth > 991 || window.innerWidth <= 575){
+            if(screenWidth > 991 || screenWidth <= 575){
                 return offset + 9;
             } else return offset + 6;
         });

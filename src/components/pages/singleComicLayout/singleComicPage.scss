@@ -39,7 +39,6 @@
 }
 
 @media (max-width:1200px) {
-
     .single-comic {
         grid-template-columns: 293px 450px auto;
     }
@@ -57,6 +56,34 @@
         &__descr {
             font-size: 16px;
             line-height: 22px;
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .single-comic {
+        grid-template-columns: 150px 150px auto;
+        column-gap: 20px;
+        align-items: start;
+        img {
+            max-width: 150px;
+        }
+        &__descr {
+            font-size: 14px;
+            line-height: 16px;
+            margin-top: 5px;
+        }
+        &__name {
+            font-size: 20px;
+            line-height: 24px;
+        }
+        &__price {
+            margin-top: 10px;
+            font-size: 22px;
+            line-height: 28px;
+        }
+        &__back {
+            display: none;
         }
     }
 }

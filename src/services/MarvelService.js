@@ -17,7 +17,7 @@ const useMarvelService =  () =>  {
 		descrMaxChar = 140;
 	}
 	if(window.innerWidth <= 575) {
-		charLimit = 9;
+		charLimit = 8;
 		comicsAmount = 6;
 	}
 	
@@ -38,8 +38,8 @@ const useMarvelService =  () =>  {
 		return _transformComics(res.data.results[0]);
 	};
 
-	const getAllCharacters = async (offset = _baseOffset) => {
-		const res = await request(`${_apiBase}characters?limit=${charLimit}&offset=${offset}&ts=${ts}&${_apiKey}&hash=${_hash}`);
+	const getAllCharacters = async (offset = _baseOffset, charAmount = charLimit) => {
+		const res = await request(`${_apiBase}characters?limit=${charAmount}&offset=${offset}&ts=${ts}&${_apiKey}&hash=${_hash}`);
 		return res.data.results.map(_transformCharacter);
 	}
 
@@ -64,8 +64,8 @@ const useMarvelService =  () =>  {
 			description: char.description ? `${char.description.slice(0, descrMaxChar)}...` : 'There is no available description.',
 			thumbnail: char.thumbnail.path + '.' + char.thumbnail.extension,
 			homepage: char.urls[0].url,
-			// wiki: char.urls[1].url,
-			wiki: 'https://www.marvel.com/characters/'+ char.name,
+			wiki: char.urls[1].url,
+			more: 'https://www.marvel.com/search?limit=20&content_type=characters&query='+ char.name,
 			comics: char.comics.items
 		}
 	}

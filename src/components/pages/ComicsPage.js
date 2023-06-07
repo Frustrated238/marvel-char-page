@@ -13,7 +13,7 @@ const ComicsPage = () => {
 					/>
 				<title>Marvel comics</title>
 			</Helmet>
-			<AppBanner/>
+			{window.innerWidth <= 575 ? '' : <AppBanner/>}
 			<ComicsList/>
 		</>
 	)

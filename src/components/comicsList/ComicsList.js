@@ -12,16 +12,12 @@ const setContent = (process, Component, newItemLoading) => {
 	switch(process) {
 		case 'waiting':
 			return <Spinner/>;
-			break;
 		case 'loading': 
 			return newItemLoading ? <Component/> : <Spinner/>;
-			break;
 		case 'confirmed': 
 			return <Component/>;
-			break;
 		case 'error': 
 			return <ErrorMessage/>;
-			break;
 		default: 
 			throw new Error('Unexpected process state')
 	} 
@@ -33,8 +29,7 @@ const ComicsList = () => {
     const [offset, setOffset] = useState(100);
     const [comicsEnded, setComicsEnded] = useState(false);
 
-
-    const {loading, error, getAllComics, process, setProcess} =  useMarvelService();
+    const {getAllComics, process, setProcess} =  useMarvelService();
 
     useEffect(() =>{
         onRequest(offset, true);
@@ -56,9 +51,9 @@ const ComicsList = () => {
             ended = true;
         }
         setComicsList(comicsList => [...comicsList, ...newComicsList]);
-        setNewItemLoading(newItemLoading => false);
-        setOffset(offset => offset + 9);
-        setComicsEnded(comicsEnded => ended);
+        setNewItemLoading(false);
+        setOffset(offset + 9);
+        setComicsEnded(ended);
     }
 
     function renderItems(arr) {

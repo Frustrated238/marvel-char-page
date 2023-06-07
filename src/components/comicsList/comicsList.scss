@@ -34,3 +34,31 @@
         }
     }
 }
+
+@media (max-width:575px) { 
+    .comics {
+        &__list {
+            margin-top: 25px;
+        }
+        &__grid {
+            grid-template-columns: repeat(auto-fill, 150px);
+            row-gap: 15px;
+        }
+
+        &__item {
+            &-img {
+                width: 150px;
+                height: auto;
+            }
+            &-name {
+                margin-top: 5px;
+                font-weight: bold;
+                font-size: 12px;
+                line-height: 16px;
+            }
+        }
+    }
+    .button__long {
+        margin-top: 25px;
+    }
+} 

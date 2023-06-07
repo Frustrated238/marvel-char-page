@@ -35,9 +35,9 @@
     &__btns {
         display: flex;
         justify-content: center;
-        // a:nth-child(1) {
-        //     margin-right: 30px;
-        // }
+        a:nth-child(1) {
+            margin-right: 30px;
+        }
     }
     &__static {
         padding: 40px 35px;
@@ -53,7 +53,10 @@
         line-height: 32px;
         letter-spacing: -0.045em;
         color: #FFFFFF;
-        &:nth-child(2) {
+        &-mobile {
+            display: none;
+        }
+        &:nth-child(3) {
             margin-top: 33px;
         }
     }
@@ -115,7 +118,7 @@
             display: block;
             text-align: center;
             .button {
-                margin-top: 16px;
+                margin-top: 0;
                 width: 150px;
             }
         }
@@ -130,6 +133,12 @@
         }
         &__title {
             display: none;
+            &-mobile{
+                display: block;
+                color: #232222;
+                margin-bottom: 12px;
+                font-weight: 700;
+            }
         }
         &__block{
             padding: 16px 36px 32px 36px;

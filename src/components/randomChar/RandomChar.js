@@ -34,7 +34,6 @@ const RandomChar = () => {
         <div className="randomchar">
             {setContent(process, View , char)}
             <div className="randomchar__static">
-            <div className='randomchar__title-mobile'>Random character for today</div>
                 <p className="randomchar__title">
                     Random character for today!<br/>
                     Do you want to get to know him better?
@@ -52,7 +51,7 @@ const RandomChar = () => {
 }
 
 const View = ({data}) => {
-    const {name, description, thumbnail, wiki} = data;
+    const {name, description, thumbnail, more, homepage, id} = data;
     let imgStyle = {'objectFit' : 'cover'};
     if (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
         imgStyle = {'objectFit' : 'contain'};
@@ -60,6 +59,7 @@ const View = ({data}) => {
 
     return (
         <div className="randomchar__block">
+            <div className='randomchar__title-mobile'>Random character for today</div>
             <img src={thumbnail} style={imgStyle} alt="Random character" className="randomchar__img"/>
             <div className="randomchar__info">
                 <p className="randomchar__name">{name.replace(/\([^)]*\)/g, '')}</p>
@@ -67,12 +67,12 @@ const View = ({data}) => {
                     {description}
                 </p>
                 <div className="randomchar__btns">
-                    <a href={wiki} className="button button__main">
-                        <div className="inner">Wiki</div>
+                    <a href={more} className="button button__main">
+                        <div className="inner">About</div>
                     </a>
-                    {/* <a href={wiki} className="button button__secondary">
-                        <div className="inner">Wiki</div>
-                    </a> */}
+                    <a href={`/characters/${id}`} className="button button__secondary">
+                        <div className="inner">Homepage</div>
+                    </a>
                 </div>
             </div>
          </div>
