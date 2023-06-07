@@ -88,7 +88,38 @@
 }
 
 
-
+@media (max-width: 767px) { 
+    .char{
+        &__content{
+            display: block;
+        }
+        &__grid {
+            grid-template-columns: repeat(3, 160px);
+            column-gap: 15px;
+        }
+        &__item {
+            padding: 0;
+            width: 150px;
+            height: 220px;
+            img {
+                width: 150px;
+                height: 150px;
+                transform: none;
+            }
+            &_selected {
+                box-shadow: none;
+                transform: none;
+            }
+        }
+        &__name {
+            margin-top: 12px;
+            font-weight: 500;
+            font-size: 17px;
+            line-height: 18px;
+            text-align: center;
+        }
+    }
+}
 
 @media (max-width: 575px) { 
     .char{

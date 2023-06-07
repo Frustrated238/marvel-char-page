@@ -25,18 +25,29 @@
         }
     }
 }
-
-@media (max-width: 575px) { 
-   
+@media (max-width: 767px) { 
     .app {
+        &__title {
+            text-align: center;
+        }
         &__header {
             display: block;
         }
+        &__menu {
+            margin-top: 5px;
+            grid-template-columns: repeat(2, 20%) ;
+            justify-content: center;
+        }
+    }
+}
+
+@media (max-width: 575px) { 
+    .app {
         &__title {
             line-height: 33px;  
-            text-align: center;
         }
         &__menu {
+            grid-template-columns: repeat(2, 1fr) ;
             margin-top: 16px;
             box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
             line-height: 40px;

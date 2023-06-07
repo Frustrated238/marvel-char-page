@@ -2,7 +2,7 @@ import {useState, useEffect, useRef, useMemo} from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash.debounce';
 import {Link} from 'react-router-dom';
-
+import { v4 as uuidv4 } from 'uuid';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import useMarvelService from '../../services/MarvelService';
@@ -74,9 +74,9 @@ const CharList = (props) => {
             ended = true;
         }
         setOffset(offset => {
-            if(screenWidth > 991 || screenWidth <= 575){
+            if(screenWidth > 766 || screenWidth <= 575){
                 return offset + 9;
-            } else return offset + 6;
+            } else return offset + 9;
         });
         setCharList(charList => [...charList, ...newCharList]);
         setNewItemLoading(false);
@@ -110,29 +110,29 @@ const CharList = (props) => {
             }
             
             return (
-                <Link to={screenWidth <= 575 ? `/characters/${item.id}`: null}>
-                        <li 
-                        className="char__item"
-                        tabIndex={0}
-                        ref={el => itemRefs.current[i] = el}
-                        key={item.id}
-                        onClick={() => {
-                            if (screenWidth <= 575) {
+                <Link to={screenWidth <= 991 ? `/characters/${item.id}`: null}
+                    key={uuidv4()}>
+                    <li 
+                    className="char__item"
+                    tabIndex={0}
+                    ref={el => itemRefs.current[i] = el}
+                    onClick={() => {
+                        if (screenWidth <= 575) {
 
-                            } else {
-                                props.onCharSelected(item.id);
-                                focusOnItem(i);
-                            }
-                        }}
-                        onKeyUp={(e) => {
-                            if (e.key === ' ' || e.key === "Enter") {
-                                props.onCharSelected(item.id);
-                                focusOnItem(i);
-                            }
-                        }}>
-                            <img src={item.thumbnail} alt={item.name} style={imgStyle}/>
-                            <div className="char__name">{item.name}</div>
-                    </li>
+                        } else {
+                            props.onCharSelected(item.id);
+                            focusOnItem(i);
+                        }
+                    }}
+                    onKeyUp={(e) => {
+                        if (e.key === ' ' || e.key === "Enter") {
+                            props.onCharSelected(item.id);
+                            focusOnItem(i);
+                        }
+                    }}>
+                        <img src={item.thumbnail} alt={item.name} style={imgStyle}/>
+                        <div className="char__name">{item.name}</div>
+                </li>
                 </Link>
 
             )
@@ -140,17 +140,17 @@ const CharList = (props) => {
 
         return (
             <ul className="char__grid">
-                    {items}
-            <li>
-            {screenWidth <= 575 ?
-                <button 
-                        className=" button__mobile"
-                        disabled={newItemLoading}
-                        style={{'display': charEnded ? 'none' : 'block'}}
-                        onClick={() => onRequest(offset)}>
-                        <div className="inner">load more</div>
-                </button> : null }    
-            </li>
+                {items}
+                <li>
+                {screenWidth <= 575 ?
+                    <button 
+                            className=" button__mobile"
+                            disabled={newItemLoading}
+                            style={{'display': charEnded ? 'none' : 'block'}}
+                            onClick={() => onRequest(offset)}>
+                            <div className="inner">load more</div>
+                    </button> : null }    
+                </li>
             </ul>
         )
     }

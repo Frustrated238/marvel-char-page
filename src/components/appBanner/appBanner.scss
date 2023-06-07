@@ -18,3 +18,20 @@
         }
     }
 }
+
+@media (max-width: 767px) {
+    .app {
+        &__banner {
+            grid-template-columns: 300px auto;
+            img:nth-child(1) {
+                    display: none;
+                }
+            &-text {
+                font-size: 22px;
+                line-height: 28px;
+                padding-left: 0px;
+                padding-top: 20px;
+            } 
+        }
+    }
+}

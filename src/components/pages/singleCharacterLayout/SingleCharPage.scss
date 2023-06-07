@@ -52,6 +52,17 @@
             font-size: 16px;
             line-height: 22px;
         }
+        &__back {
+            margin: 28px 0;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 21px;
+            &__img{
+                margin-right: 12px;
+                height: 18px;
+                transform: translateY(2px);
+            }
+        }
     }
 }
 

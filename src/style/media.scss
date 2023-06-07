@@ -24,7 +24,18 @@
 @media (max-width: 767px) {
     .app {
         width: 500px;
-        padding: 48px 0 48px 0;
+        padding: 28px 0 48px 0;
+    }
+    .char__content .char__info {
+        display: none;
+    }
+    .char{
+        &__search-form {
+            display: none;
+        }
+    }
+    main {
+        margin-top: 30px;
     }
 }
 
@@ -32,6 +43,7 @@
 @media (max-width: 575px) { 
     .app {
         width: 312px;
+        padding: 48px 0 48px 0;
     }
     .active{
         background-color: $main-color;
@@ -60,6 +72,6 @@
             line-height: 21px;
         }
     }
-   
+
 
 }

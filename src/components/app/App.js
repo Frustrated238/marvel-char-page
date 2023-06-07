@@ -26,7 +26,7 @@ const App = () => {
                             <Route exact path="/" element={<MainPage/>}/>      
                             <Route exact path="/comics" element={<ComicsPage/>}/>
                             <Route exact path="/comics/:id" element={<SinglePage Component={SingleComicPage} dataType='comic'/>}/>
-                            <Route exact path="/characters/:id" element={<SinglePage Component={screenWidth > 575 ? SingleCharPage : SingleCharMobile} dataType='character'/>}/>
+                            <Route exact path="/characters/:id" element={<SinglePage Component={screenWidth > 767 ? SingleCharPage : SingleCharMobile} dataType='character'/>}/>
                             <Route path="*" element={<Page404/>}/>
                          </Routes>
                     </Suspense>

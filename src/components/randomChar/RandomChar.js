@@ -14,7 +14,7 @@ const RandomChar = () => {
 
     useEffect(() => {
         updateChar();
-        // const timerId = setInterval(updateChar, 120000);
+        // const timerId = setInterval(updateChar, 60000);
         // return () => { clearInterval(timerId) }
     }, [])
 
@@ -51,7 +51,7 @@ const RandomChar = () => {
 }
 
 const View = ({data}) => {
-    const {name, description, thumbnail, more, homepage, id} = data;
+    const {name, description, thumbnail, more, id} = data;
     let imgStyle = {'objectFit' : 'cover'};
     if (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
         imgStyle = {'objectFit' : 'contain'};
