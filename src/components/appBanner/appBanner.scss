@@ -35,3 +35,26 @@
         }
     }
 }
+
+
+@media (max-width: 575px) { 
+    .app {
+        &__banner {
+            padding: 4px 51px 24px 52px;
+            grid-template:100px 46px / 209px;
+            grid-auto-flow: dense;
+            height: 174px;
+            text-align: center;
+            justify-items: center;
+            img{
+                order: -1;
+            }
+            &-text {
+                order: 1;
+                padding-top: 0;
+                font-size: 20px;
+                line-height: 23px;
+            }
+        }
+    }
+}

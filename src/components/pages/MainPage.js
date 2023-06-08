@@ -30,9 +30,7 @@ const MainPage = () =>{
 				<RandomChar/>
 			</ErrorBoundary>
 			<div className="char__content">
-				{/* <ErrorBoundary> */}
 					<CharList onCharSelected={onCharSelected}/>
-				{/* </ErrorBoundary> */}
 				<div>
 					<ErrorBoundary>
 						<CharInfo charId={selectedChar}/>

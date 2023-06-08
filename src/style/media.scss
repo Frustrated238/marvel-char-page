@@ -47,7 +47,7 @@
     }
     .active{
         background-color: $main-color;
-        color: #FFFFFF;
+        color: white;
         box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
         border-radius: 20px;
         width: 100%;
@@ -72,6 +72,11 @@
             line-height: 21px;
         }
     }
-
+    a {
+        &:hover {
+            color: white;
+        }
+    }
+    
 
 }

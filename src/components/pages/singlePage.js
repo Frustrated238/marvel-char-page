@@ -9,7 +9,6 @@ const SinglePage = ({Component, dataType}) => {
         const {id} = useParams();
         const [data, setData] = useState(null);
         const {getComic, getCharacter, clearError, process, setProcess} = useMarvelService();
-        const screenWidth = window.innerWidth;
 
         useEffect(() => {
             updateData();
@@ -37,7 +36,7 @@ const SinglePage = ({Component, dataType}) => {
 
         return (
             <>
-                {screenWidth > 575 ? <AppBanner/> : null}
+                <AppBanner/>
                 {setContent(process, Component, data)}
             </>
         )
