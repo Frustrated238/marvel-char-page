@@ -1,8 +1,9 @@
 import {useState, useEffect, useRef, useMemo} from 'react';
 import PropTypes from 'prop-types';
-import debounce from 'lodash.debounce';
+// import debounce from 'lodash.debounce';
 import {Link} from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import useMarvelService from '../../services/MarvelService';
@@ -41,6 +42,7 @@ const CharList = (props) => {
  
     useEffect(() =>{
         onRequest(offset, true);
+    // eslint-disable-next-line
     }, []);
 
     // useEffect(() => {
@@ -157,6 +159,7 @@ const CharList = (props) => {
 
     const elements = useMemo(() => {
         return setContent(process, () =>  renderItems(charList), newItemLoading)
+         // eslint-disable-next-line
     }, [process])
 
     return (
