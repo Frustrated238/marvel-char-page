@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import setContent from '../../utils/setContent';
+import { Link } from 'react-router-dom';
+
 
 import useMarvelService from '../../services/MarvelService';
 
@@ -70,9 +72,9 @@ const View = ({data}) => {
                     <a href={more} className="button button__main">
                         <div className="inner">About</div>
                     </a>
-                    <a href={`/characters/${id}`} className="button button__secondary">
+                    <Link to={`/characters/${id}`}className="button button__secondary">
                         <div className="inner">Homepage</div>
-                    </a>
+                    </Link>
                 </div>
             </div>
          </div>
