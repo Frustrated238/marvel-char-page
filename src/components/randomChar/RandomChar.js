@@ -69,12 +69,12 @@ const View = ({data}) => {
                     {description}
                 </p>
                 <div className="randomchar__btns">
-                    <a href={more} className="button button__main">
-                        <div className="inner">About</div>
-                    </a>
                     <Link to={`/characters/${id}`}className="button button__secondary">
-                        <div className="inner">Homepage</div>
+                        <div className="inner">About</div>
                     </Link>
+                    <a href={more} className="button button__main">
+                        <div className="inner">Wiki</div>
+                    </a>
                 </div>
             </div>
          </div>
